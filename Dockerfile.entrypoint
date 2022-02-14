@@ -38,6 +38,7 @@ if [ "$1" = "cloudflared" ] && [ "$2" = "tunnel" ]; then
 
     export TUNNEL_FORCE_PROVISIONING_DNS='false'
     export TUNNEL_HOSTNAME=${TUNNEL_HOSTNAME/https:\/\//}
+    export TUNNEL_HOSTNAME=${TUNNEL_HOSTNAME,,}
     export TUNNEL_NAME=${TUNNEL_NAME:-$TUNNEL_HOSTNAME}
 
     EXISTING_TUNNELS_JSON=$(cloudflared tunnel list --name "${TUNNEL_NAME}" --output json)
